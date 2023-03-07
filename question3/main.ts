@@ -1,10 +1,15 @@
 export class Connect4 {
-
+    //number currentPlayer, row, col,
+    //number[][] grid
+    // initialize currentPlayer = 1, row = 0;
     constructor() {
-      // Good luck
+      //set up a grid?
     }
   
     play(col: number): string{
-      // Good luck
+      //check col is not full
+      //if not full, mark spot as taken
+      //check for win
+      //next player's turn
     }
   }
