@@ -1,5 +1,4 @@
-//export 
-function isValidWalk(walk) {
+export function isValidWalk(walk: string[]) {
     
   //initial check to see if the walk will take exactly ten minutes
     if(walk.length !== 10) {
@@ -15,7 +14,7 @@ function isValidWalk(walk) {
   
   
 
-  const counts = {};
+  const counts: any = {};
 
   walk.forEach(el => {
     counts[el] = (counts[el] || 0) + 1;
