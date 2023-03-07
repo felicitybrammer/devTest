@@ -1,12 +1,15 @@
 export function findOutlier(integers: number[]): number {
   // to search for an outlier, I want a solution with the least amount of time complexity possible
   // avoid using nested loops, since integers array can be quite large
-  // a set can only store unique values so try converting to set
-  let nArray = [...new Set<number>(integers)];
+  
+//try testing 1 element to see if next is odd or even (add condition to exclude 0) 
+// if two odd, find even outlier
+// if two even, find odd outlier
 
-  //return Array.from(arrToSet); //problem: this returns an array but we want a number
-  let N = Number(nArray.join(''));
-  return N;
+//or what about sorting into two lists? even and odd
+// then return the list with only one element (exclude 0)
+//which sorting algorithm is least time complex
+
 
 
   }
