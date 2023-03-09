@@ -2,22 +2,24 @@ export class Connect4 {
   currentPlayer: number = 1;
   turn: number = 1;
   col: number;
+  grid: number[];
   row0: number = 0;
   row1: number = 0;
   row2: number = 0;
   row3: number = 0;
   row4: number = 0;
   row5: number = 0;
+  win: boolean = false;
 
   constructor() {}
 
-  getMove() {
-    return this.col;
-  }
+  // getMove() {
+  //   return this.col;
+  // }
 
   setMove(col: number) {
     this.col = col;
-
+    // log how many rows have been fille in each column
     switch (col) {
       case 0:
         this.row0++;
@@ -38,20 +40,37 @@ export class Connect4 {
         this.row5++;
         break;
     }
-
+    //check for full columns
     if (this.row0 > 5 || this.row1 > 5 || this.row2 > 5 || this.row3 > 5 ||this.row4 > 5 || this.row5 > 5) {
       return "Column full!";
-    } else {
+     } 
+    else if (this.checkForWin(this.grid)) { 
+       //check for wins
+       
+       return `Player ${this.currentPlayer} wins! Game has finished!`
+     }
+     else {
       return `Player ${this.currentPlayer} has a turn`;
     }
   }
-  //if row = 6, return column full
+  
   newTurn(_currentPlayer) {
     this.currentPlayer == 1
       ? (this.currentPlayer = 2)
       : (this.currentPlayer = 1);
     this.turn++;
     return this.currentPlayer;
+  }
+
+  checkForWin(_grid) {
+    //check for vertical win
+    for (let i:number = 0; i < this.grid.length; i++) {
+      if (this.grid[i] && this.grid[i+7] && this.grid[i+14] && this.grid[i+21]) {
+        return true;
+      }
+      return false;
+    }
+    
   }
 
   play(col: number): string {
@@ -64,19 +83,7 @@ export class Connect4 {
     this.newTurn(this.currentPlayer);
 
     //log the move
-
-    //check for wins (if win, return "player n wins") else return "player n has a turn"
-    //what do you need to win? (try 4 moves in same column first)
-
-    //check for full column (if so, return "column full") else return "player n has a turn"
-    // row variables?
-    return this.setMove(col);
-    // if (this.row0 > 5 || this.row1 > 5 || this.row4 > 5) {
-    //   //need to connect this to a specific column
-
-    //   return "Column full!";
-    // } else {
-    //   return `Player ${this.currentPlayer} has a turn`;
-    // }
+    return this.setMove(this.col);
+   
   }
 }
