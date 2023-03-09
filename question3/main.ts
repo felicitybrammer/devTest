@@ -2,7 +2,7 @@ export class Connect4 {
   currentPlayer: number = 1;
   turn: number = 1;
   col: number;
-  grid: number[];
+  grid: string[];
   row0: number = 0;
   row1: number = 0;
   row2: number = 0;
@@ -11,15 +11,15 @@ export class Connect4 {
   row5: number = 0;
   win: boolean = false;
 
-  constructor() {}
-
-  // getMove() {
-  //   return this.col;
-  // }
+  constructor() {
+    for (let i:number = 0; i < this.grid.length; i++) {
+      this.grid[i] = '';
+    }
+  }
 
   setMove(col: number) {
     this.col = col;
-    // log how many rows have been fille in each column
+    // log how many rows have been filled in each column
     switch (col) {
       case 0:
         this.row0++;
@@ -40,13 +40,17 @@ export class Connect4 {
         this.row5++;
         break;
     }
+
+    //log Move for player
+    //we know current player and column number, how to mark a grid position as taken by a player
+    
+
     //check for full columns
     if (this.row0 > 5 || this.row1 > 5 || this.row2 > 5 || this.row3 > 5 ||this.row4 > 5 || this.row5 > 5) {
       return "Column full!";
      } 
     else if (this.checkForWin(this.grid)) { 
-       //check for wins
-       
+       //check for wins     
        return `Player ${this.currentPlayer} wins! Game has finished!`
      }
      else {
@@ -63,14 +67,13 @@ export class Connect4 {
   }
 
   checkForWin(_grid) {
-    //check for vertical win
+    //check for vertical win first
     for (let i:number = 0; i < this.grid.length; i++) {
-      if (this.grid[i] && this.grid[i+7] && this.grid[i+14] && this.grid[i+21]) {
+      if (this.grid[i] && this.grid[i+7] && this.grid[i+14] && this.grid[i+21]) { //this line does not currently test anything
         return true;
       }
       return false;
-    }
-    
+    }  
   }
 
   play(col: number): string {
@@ -82,7 +85,7 @@ export class Connect4 {
     //say whose move it is
     this.newTurn(this.currentPlayer);
 
-    //log the move
+    //log the move, check for full columns and check for wins
     return this.setMove(this.col);
    
   }
