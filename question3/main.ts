@@ -5,7 +5,7 @@ export class Connect4 {
     currentPlayer: number = 1;
     turn: number = 1;
     constructor() {
-      //set up a grid?
+     
       
     }
     
@@ -16,27 +16,24 @@ export class Connect4 {
     }
 
     play(col: number): string{
-      //player n has a turn is logged. // what do we need to show for player 1 to have a turn
-      //this.currentPlayer;
-      //return `Player ${this.currentPlayer} has a turn`;
-     //this.displayPlayer(this.currentPlayer);
-     // this.newTurn(this.currentPlayer)
-     // this.displayPlayer(this.currentPlayer);
+      //display strings to show whose turn it is
       if (this.turn == 1) {
         this.turn++;
         return `Player 1 has a turn`;  
       }
 
       this.newTurn(this.currentPlayer);
+
+      //check for wins (if win, return "player n wins") else return "player n has a turn"
+      //what do you need to win? 
+
+
+      //check for full column (if so, return "column full") else return "player n has a turn"
+      // columnCount variables?
+      
       return `Player ${this.currentPlayer} has a turn`;
       
-      //check col is not full
-      //if not full, mark spot as taken
-      //check for win
-      //next player's turn
+      
     }
   }
 
-  //class is template for objects, constructor initializes object properties
-  //what does a connect4 object have?
-  // if instance properties' values do not depend on constructor's args, can define them as class fields
