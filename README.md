@@ -1,10 +1,16 @@
 Question 1: all tests passing
+
+
 ![Screenshot 2023-03-09 at 11 44 35](https://user-images.githubusercontent.com/39717428/224140555-22f3fbab-5e65-46a2-a29c-035f8e9d686b.png)
 
 Question 2: all tests passing
+
+
 ![Screenshot 2023-03-09 at 11 45 12](https://user-images.githubusercontent.com/39717428/224140648-0012b534-c514-4a4a-afb4-e886dc9da9b3.png)
 
 Question 3: one test passing
+
+
 ![Screenshot 2023-03-09 at 11 58 52](https://user-images.githubusercontent.com/39717428/224140755-9f41465e-9a23-487c-97ad-22cd0a84a8f1.png)
 
 
