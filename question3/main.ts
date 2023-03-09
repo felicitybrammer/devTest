@@ -8,13 +8,11 @@ export class Connect4 {
       //set up a grid?
       
     }
-    displayPlayer(_currentPlayer) {
-      return `Player ${this.currentPlayer} has a turn`;
-    }
+    
 
     newTurn(_currentPlayer){
       this.currentPlayer == 1 ? this.currentPlayer = 2 : this.currentPlayer = 1
-      return this.currentPlayer;    
+      return this.currentPlayer;
     }
 
     play(col: number): string{
@@ -25,9 +23,12 @@ export class Connect4 {
      // this.newTurn(this.currentPlayer)
      // this.displayPlayer(this.currentPlayer);
       if (this.turn == 1) {
-        return `Player 1 has a turn`;
         this.turn++;
+        return `Player 1 has a turn`;  
       }
+
+      this.newTurn(this.currentPlayer);
+      return `Player ${this.currentPlayer} has a turn`;
       
       //check col is not full
       //if not full, mark spot as taken
