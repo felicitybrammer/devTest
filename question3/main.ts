@@ -11,11 +11,12 @@ export class Connect4 {
   row5: number = 0;
   win: boolean = false;
 
-  constructor() {
-    for (let i:number = 0; i < this.grid.length; i++) {
-      this.grid[i] = '';
-    }
-  }
+  constructor() {}
+
+  //initialize blank grid
+  // for (let i:number = 0; i < this.grid.length; i++) {
+    //   this.grid[i] = '';
+    // }
 
   setMove(col: number) {
     this.col = col;
@@ -41,8 +42,8 @@ export class Connect4 {
         break;
     }
 
-    //log Move for player
-    //we know current player and column number, how to mark a grid position as taken by a player
+    //TODO:log Move for player
+    //we know current player and column number, how to mark a grid position as taken by a player?
     
 
     //check for full columns
@@ -68,6 +69,8 @@ export class Connect4 {
 
   checkForWin(_grid) {
     //check for vertical win first
+
+    //TODO: test to see if 4 vertical spaces are taken by a player
     for (let i:number = 0; i < this.grid.length; i++) {
       if (this.grid[i] && this.grid[i+7] && this.grid[i+14] && this.grid[i+21]) { //this line does not currently test anything
         return true;
