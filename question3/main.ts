@@ -7,26 +7,17 @@ export class Connect4 {
   constructor() {
     this.currentPlayer = 1;
     //set up blank grid
-    this.grid = Array.from(Array(6), () => Array(7).fill(" ")); //TODO: fill a grid with ' '
+    this.grid = []; //TODO: fill a grid with ' '
+    for (var i: number = 0; i < 6; i++){
+      this.grid[i] = [];
+      for (var j:number = 0; j < 7; j++) {
+        this.grid[i][j] = ' ';
+      }
+    }
     this.turn = 1;
     this.win = false;
   }
 
-  // newTurn(currentPlayer: number): number {
-  //   this.currentPlayer === 1
-  //     ? (this.currentPlayer = 2)
-  //     : (this.currentPlayer = 1);
-  //   this.turn++;
-  //   return this.currentPlayer;
-  // }
-
-  checkForWin(row: number, col: number): boolean {
-    const taken = this.grid[row][col];
-
-    //TODO: test to see if 4 vertical spaces are taken by a player
-    if (taken) return true; //dummy condition for testing
-    return false;
-  }
 
   play(col: number): string {
     if (this.win) {
@@ -36,8 +27,8 @@ export class Connect4 {
     //log the move, check for full columns and check for wins
     // log how many rows have been filled in each column
 
+    //make a move
     let row = 0; //max row possible
-    //check for full columns by
     while (row >= 0) {
       if (this.grid[row][col] == " ") {
         this.grid[row][col] = this.currentPlayer.toString();
@@ -45,11 +36,12 @@ export class Connect4 {
       }
       row++;
     }
+    //check for full columns
     if (row > 5) {
       return "Column full!";
     }
-
-    if (this.checkForWin(row, col)) {
+    //check for a win
+    if (this.checkForWin(row, col) == false) {
       //check for wins
       this.win = true;
       return `Player ${this.currentPlayer} wins!`;
@@ -66,5 +58,13 @@ export class Connect4 {
       this.turn++;
       return `Player ${this.currentPlayer} has a turn`;
     }
+  }
+
+  checkForWin(row: number, col: number): boolean {
+    const taken = this.grid[row][col];
+
+    //TODO: test to see if 4 vertical spaces are taken by a player
+    if (taken) return true; //dummy condition for testing
+    return false;
   }
 }
